@@ -1,0 +1,12 @@
+Bootstrap: docker
+From: tensorflow/tensorflow:2.17.0
+
+%post
+  apt-get update
+  apt-get install -y libopenmpi-dev
+  apt-get install -y python3-pip
+  pip3 install --upgrade jax
+  pip3 install gin-config gym mpi4py dill scipy
+
+%runscript
+  python3 main.py
